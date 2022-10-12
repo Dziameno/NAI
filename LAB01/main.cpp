@@ -7,7 +7,7 @@
 #include <vector>
 #include <complex>
 
-using mojamapa_t = std::map<std::string, int>;
+using mojamapa_t = std::map<int, double>;
 using mojafunkcja_t = std::function<double(mojamapa_t)>;
 
 void wypisz(mojamapa_t mapa, const mojafunkcja_t& func){
@@ -16,25 +16,25 @@ void wypisz(mojamapa_t mapa, const mojafunkcja_t& func){
 
 int main(int argc, char **argv) {
     using namespace std;
-    map<string, int> mapa = {
-            {"arg_0", 1}, // example
-            {"arg_1", 2}
+    map<int, double> mapa = {
+            {0, 1}, // example
+            {1, 2}
     };
     map<string, mojafunkcja_t> formatery;
     formatery["add"] = [](mojamapa_t add) {
-        return add.at("arg_2") + add.at("arg_3");
+        return add.at(2) + add.at(3);
     };
     formatery["sin"] = [](mojamapa_t si) {
-        double result = si.at("arg_2") * (numbers::pi/180);
+        double result = si.at(2) * (numbers::pi/180);
         return sin(result) ;
     };
     formatery["mod"] = [](mojamapa_t mod) {
-        return mod.at("arg_2") % mod.at("arg_3");
+        return (int)mod.at(2) % (int)mod.at(3);
     };
     try {
         vector<string> argumenty(argv, argv + argc);
         for( int i=2; i < argumenty.size(); i++){
-            mapa.insert({{"arg_" + to_string(i), stoi(argumenty.at(i))}});
+            mapa[i] = stoi(argumenty.at(i));
         }
         auto selected_f = argumenty.at(1);
         wypisz(mapa, formatery.at( selected_f));

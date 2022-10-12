@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/CODE/SEM V/NAI/LAB01/cmake-build-debug",
-		"source" : "E:/CODE/SEM V/NAI/LAB01"
+		"build" : "Z:/SEM V/NAI/LAB01/cmake-build-debug",
+		"source" : "Z:/SEM V/NAI/LAB01"
 	},
 	"version" : 
 	{
