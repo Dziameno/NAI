@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "LAB02.exe"
-		},
-		{
-			"path" : "LAB02.pdb"
+			"path" : "LAB02"
 		}
 	],
 	"backtrace" : 1,
@@ -38,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
+					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk"
 				},
 				{
 					"fragment" : "-std=gnu++20"
@@ -71,16 +68,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "LAB02",
-	"nameOnDisk" : "LAB02.exe",
+	"nameOnDisk" : "LAB02",
 	"paths" : 
 	{
 		"build" : ".",
