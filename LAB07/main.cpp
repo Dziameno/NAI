@@ -7,7 +7,8 @@ using namespace cv;
 using namespace std;
 
 int main(int argc, char** argv) {
-    VideoCapture cap(1); // 0-macbook 1-iphone
+
+    VideoCapture cap(0); // 0-macbook 1-iphone
     if (!cap.isOpened())
     {
         cout << "Cannot open the web cam" << endl;
@@ -15,17 +16,18 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    double dWidth = cap.get(CAP_PROP_FRAME_WIDTH);
-    double dHeight = cap.get(CAP_PROP_FRAME_HEIGHT);
-
-    cout << "Resolution of the video : " << dWidth << " x " << dHeight << endl;
 
     namedWindow("Original", WINDOW_NORMAL);
     namedWindow("Mirrored", WINDOW_NORMAL);
 
     while (true)
     {
-        Mat frame;
+        Mat frame, thresh, contour_img, new_img;
+        vector<vector<Point>> contours;
+        vector<Vec4i> hierarchy;
+
+        chrono::steady_clock::time_point start = chrono::steady_clock::now();
+
         bool bSuccess = cap.read(frame);
         Mat frameMirror;
         flip(frame, frameMirror, 1);
@@ -35,13 +37,29 @@ int main(int argc, char** argv) {
             break;
         }
 
-        imshow("Original", frame);
+//        imshow("Original", frame);
         imshow("Mirrored", frameMirror);
 
         if (waitKey(1) == 27) {
             cout << "Esc pressed. Aborting" << endl;
             break;
         }
+
+
+        cvtColor(frameMirror, thresh, COLOR_BGR2GRAY);
+        threshold(thresh, thresh, 100, 255, THRESH_BINARY);
+        findContours(thresh, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+        contour_img = Mat::zeros(thresh.size(), CV_8UC3);
+        for (int i = 0; i < contours.size(); i++) {
+            drawContours(contour_img, contours, i, Scalar(0, 255, 0), 2, 8, hierarchy, 0, Point());
+        }
+
+        chrono::steady_clock::time_point end = chrono::steady_clock::now();
+
+        imshow("Contours", contour_img);
+
+        cout << chrono::duration_cast<chrono::milliseconds>(end- start).count() << "ms" << endl;
+        
     }
     return 0;
 }
