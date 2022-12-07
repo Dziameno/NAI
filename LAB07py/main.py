@@ -1,7 +1,8 @@
 import time
 import cv2 as cv
 
-video = cv.VideoCapture(1)
+
+video = cv.VideoCapture(0)
 a = 0
 
 while True:
@@ -27,7 +28,9 @@ while True:
     if len(contours) > 0:
         c = max(contours, key=cv.contourArea)
         end = time.time()
-        print(end - start)
+        print( str(round((end - start)*1000, 2)) + "ms")
+
+
 
 video.release()
 cv.destroyAllWindows()
