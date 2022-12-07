@@ -26,7 +26,6 @@ int main(int argc, char** argv) {
         vector<vector<Point>> contours;
         vector<Vec4i> hierarchy;
 
-        chrono::steady_clock::time_point start = chrono::steady_clock::now();
 
         bool bSuccess = cap.read(frame);
         Mat frameMirror;
@@ -45,21 +44,20 @@ int main(int argc, char** argv) {
             break;
         }
 
+        chrono::steady_clock::time_point start = chrono::steady_clock::now();
 
         cvtColor(frameMirror, thresh, COLOR_BGR2GRAY);
-        threshold(thresh, thresh, 100, 255, THRESH_BINARY);
-        findContours(thresh, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+        threshold(thresh, thresh, 150, 255, THRESH_BINARY);
+        findContours(thresh, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
         contour_img = Mat::zeros(thresh.size(), CV_8UC3);
-        for (int i = 0; i < contours.size(); i++) {
-            drawContours(contour_img, contours, i, Scalar(0, 255, 0), 2, 8, hierarchy, 0, Point());
-        }
+        drawContours(frameMirror, contours, -1, Scalar(0, 255, 0), 3);
+
 
         chrono::steady_clock::time_point end = chrono::steady_clock::now();
 
-        imshow("Contours", contour_img);
+        imshow("Contours", frameMirror);
 
         cout << chrono::duration_cast<chrono::milliseconds>(end- start).count() << "ms" << endl;
-        
     }
     return 0;
 }
