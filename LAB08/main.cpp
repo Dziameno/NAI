@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
             cout << "Camera stopped working" << endl;
             break;
         }
-        
+
         cvtColor(frameMirror, hsv, COLOR_BGR2HSV);
         inRange(hsv, Scalar(100, 150, 0), Scalar(140, 255, 255), mask);
         findContours(mask, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
@@ -44,20 +44,24 @@ int main(int argc, char **argv) {
             rectangle(frameMirror, rect2, Scalar(0, 255, 0), 2);
 
 
-            Point point1 = Point(rect1.x + rect1.width / 2, rect1.y + rect1.height / 6);
-            Point point2 = Point(rect1.x + rect1.width / 2, rect1.y + rect1.height / 2);
-            Point point3 = Point(rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
-            Point point4 = Point(rect2.x + rect2.width / 2, rect2.y + rect2.height / 6);
+            Point point1 = Point(rect1.x + rect1.width / 2, rect1.y + rect1.height / 2 + 20);
+            Point point2 = Point(rect1.x + rect1.width / 2, rect1.y + rect1.height / 2 -20);
+            Point point3 = Point(rect2.x + rect2.width / 2, rect2.y + rect2.height / 2 -20);
+            Point point4 = Point(rect2.x + rect2.width / 2, rect2.y + rect2.height / 2 + 20);
 
 
             circle(frameMirror, point1, 5, Scalar(0, 0, 255), -1);
             circle(frameMirror, point2, 5, Scalar(0, 0, 255), -1);
             circle(frameMirror, point3, 5, Scalar(0, 0, 255), -1);
             circle(frameMirror, point4, 5, Scalar(0, 0, 255), -1);
+            
+
+            if (point1.y - point4.y > -5 && point2.y - point3.y < 5) {
+                line(frameMirror, point1, point4, Scalar(0, 0, 255), 2);
+                line(frameMirror, point2, point3, Scalar(0, 0, 255), 2);
+            }
 
 
-            line(frameMirror, point1, point4, Scalar(0, 0, 255), 2);
-            line(frameMirror, point2, point3, Scalar(0, 0, 255), 2);
         }
 
         imshow("Webcam", frameMirror);
