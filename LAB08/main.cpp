@@ -18,7 +18,6 @@ int main(int argc, char **argv) {
     while (true) {
 
         Mat frame,frameMirror, hsv, mask, result;
-        Mat candy = imread("/Users/zuo/Documents/CODE/NAI/LAB08/candy.png", 0);
         vector<vector<Point>> contours;
         vector<Vec4i> hierarchy;
 
@@ -29,8 +28,7 @@ int main(int argc, char **argv) {
             cout << "Camera stopped working" << endl;
             break;
         }
-
-
+        
         cvtColor(frameMirror, hsv, COLOR_BGR2HSV);
         inRange(hsv, Scalar(100, 150, 0), Scalar(140, 255, 255), mask);
         findContours(mask, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
@@ -51,6 +49,7 @@ int main(int argc, char **argv) {
             Point point3 = Point(rect2.x + rect2.width / 2, rect2.y + rect2.height / 2);
             Point point4 = Point(rect2.x + rect2.width / 2, rect2.y + rect2.height / 6);
 
+
             circle(frameMirror, point1, 5, Scalar(0, 0, 255), -1);
             circle(frameMirror, point2, 5, Scalar(0, 0, 255), -1);
             circle(frameMirror, point3, 5, Scalar(0, 0, 255), -1);
@@ -59,15 +58,9 @@ int main(int argc, char **argv) {
 
             line(frameMirror, point1, point4, Scalar(0, 0, 255), 2);
             line(frameMirror, point2, point3, Scalar(0, 0, 255), 2);
-            
         }
 
-
-
-
-
         imshow("Webcam", frameMirror);
-//        imshow("Mask", mask);
 
         if (waitKey(1) == 27) {
             cout << "Esc pressed. Aborting" << endl;
