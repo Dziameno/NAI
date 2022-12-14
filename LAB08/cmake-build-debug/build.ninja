@@ -1,0 +1,141 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: LAB08
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/zuo/Documents/CODE/NAI/LAB08/cmake-build-debug/
+# =============================================================================
+# Object build statements for EXECUTABLE target LAB08
+
+
+#############################################
+# Order-only phony target for LAB08
+
+build cmake_object_order_depends_target_LAB08: phony || CMakeFiles/LAB08.dir
+
+build CMakeFiles/LAB08.dir/main.cpp.o: CXX_COMPILER__LAB08_Debug /Users/zuo/Documents/CODE/NAI/LAB08/main.cpp || cmake_object_order_depends_target_LAB08
+  DEP_FILE = CMakeFiles/LAB08.dir/main.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.0.sdk -fcolor-diagnostics -std=gnu++17
+  INCLUDES = -isystem /Users/zuo/OpenCV/opencv/cmake-build-release -isystem /Users/zuo/OpenCV/opencv/include -isystem /Users/zuo/OpenCV/opencv/modules/core/include -isystem /Users/zuo/OpenCV/opencv/modules/flann/include -isystem /Users/zuo/OpenCV/opencv/modules/imgproc/include -isystem /Users/zuo/OpenCV/opencv/modules/ml/include -isystem /Users/zuo/OpenCV/opencv/modules/photo/include -isystem /Users/zuo/OpenCV/opencv/modules/dnn/include -isystem /Users/zuo/OpenCV/opencv/modules/features2d/include -isystem /Users/zuo/OpenCV/opencv/modules/imgcodecs/include -isystem /Users/zuo/OpenCV/opencv/modules/videoio/include -isystem /Users/zuo/OpenCV/opencv/modules/calib3d/include -isystem /Users/zuo/OpenCV/opencv/modules/highgui/include -isystem /Users/zuo/OpenCV/opencv/modules/objdetect/include -isystem /Users/zuo/OpenCV/opencv/modules/stitching/include -isystem /Users/zuo/OpenCV/opencv/modules/ts/include -isystem /Users/zuo/OpenCV/opencv/modules/video/include -isystem /Users/zuo/OpenCV/opencv/modules/gapi/include
+  OBJECT_DIR = CMakeFiles/LAB08.dir
+  OBJECT_FILE_DIR = CMakeFiles/LAB08.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target LAB08
+
+
+#############################################
+# Link the executable LAB08
+
+build LAB08: CXX_EXECUTABLE_LINKER__LAB08_Debug CMakeFiles/LAB08.dir/main.cpp.o | /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_highgui.4.6.0.dylib /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_videoio.4.6.0.dylib /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_imgcodecs.4.6.0.dylib /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_imgproc.4.6.0.dylib /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_core.4.6.0.dylib
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/zuo/OpenCV/opencv/cmake-build-release/lib  /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_highgui.4.6.0.dylib  /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_videoio.4.6.0.dylib  /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_imgcodecs.4.6.0.dylib  /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_imgproc.4.6.0.dylib  /Users/zuo/OpenCV/opencv/cmake-build-release/lib/libopencv_core.4.6.0.dylib
+  OBJECT_DIR = CMakeFiles/LAB08.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = LAB08
+  TARGET_PDB = LAB08.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/zuo/Documents/CODE/NAI/LAB08/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/zuo/Documents/CODE/NAI/LAB08/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/zuo/Documents/CODE/NAI/LAB08 -B/Users/zuo/Documents/CODE/NAI/LAB08/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Target aliases.
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/zuo/Documents/CODE/NAI/LAB08/cmake-build-debug
+
+build all: phony LAB08
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Users/zuo/Documents/CODE/NAI/LAB08/CMakeLists.txt /Users/zuo/OpenCV/opencv/cmake-build-release/OpenCVConfig-version.cmake /Users/zuo/OpenCV/opencv/cmake-build-release/OpenCVConfig.cmake /Users/zuo/OpenCV/opencv/cmake-build-release/OpenCVModules.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/Platform/UnixPaths.cmake /Users/zuo/Documents/CODE/NAI/LAB08/CMakeLists.txt /Users/zuo/OpenCV/opencv/cmake-build-release/OpenCVConfig-version.cmake /Users/zuo/OpenCV/opencv/cmake-build-release/OpenCVConfig.cmake /Users/zuo/OpenCV/opencv/cmake-build-release/OpenCVModules.cmake CMakeCache.txt CMakeFiles/3.24.2/CMakeCCompiler.cmake CMakeFiles/3.24.2/CMakeCXXCompiler.cmake CMakeFiles/3.24.2/CMakeSystem.cmake: phony
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
